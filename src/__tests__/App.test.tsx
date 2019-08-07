@@ -20,10 +20,9 @@ describe("App", () => {
         });
 
         expect(app.find(Cart).props()).toEqual({
-            pizzas: [{
-                name: "Pineapple",
-                price: "$12.75"
-            }]
+            pizzas: {
+                "Pineapple": "$12.75"
+            }
         })
 
     });
