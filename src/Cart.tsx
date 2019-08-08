@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-export const Cart = (props: { pizzas: any }) => {
+export const Cart = (props: { pizzas: { name: string, price: string }[] }) => {
     return <div>
         <div> Cart</div>
         {
-            (Object.keys(props.pizzas)).map((pizza: any) => {
+            (props.pizzas).map((pizza: any) => {
                 return <div key={pizza}
                             className="cart-item">
-                    {pizza} {props.pizzas[pizza]}</div>
+                    {pizza.name} {pizza.price}</div>
             })
         }
     </div>

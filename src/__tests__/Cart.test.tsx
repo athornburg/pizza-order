@@ -5,10 +5,10 @@ import {Cart} from "../Cart";
 describe("Cart", function () {
     it('should show the pizzas in the cart', () => {
         const cart = shallow(<Cart pizzas={
-            {
-                Pineapple: "$12.75",
-                "Shishito Pepper": "$11.50"
-            }
+            [
+                {name: 'Pineapple', price: "$12.75"},
+                {name: 'Shishito Pepper', price: "$11.50"}
+            ]
         }/>);
 
         expect(cart.find(".cart-item").length).toEqual(2);
