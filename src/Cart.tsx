@@ -1,11 +1,16 @@
 import * as React from 'react';
 import {Pizza} from "./App";
+import {connect} from "react-redux";
 
-export const Cart = (props: { pizzas: Pizza[] }) => {
+type CartPropsFromRedux = {
+    selectedPizzas: Pizza[]
+}
+
+export const Cart = (props: CartPropsFromRedux) => {
     return <div>
         <div> Cart</div>
         {
-            (props.pizzas).map((pizza: any) => {
+            (props.selectedPizzas).map((pizza: any) => {
                 return <div key={pizza}
                             className="cart-item">
                     {pizza.name} {pizza.price}</div>
@@ -13,3 +18,11 @@ export const Cart = (props: { pizzas: Pizza[] }) => {
         }
     </div>
 };
+
+export const mapStateToProps = (state: any): CartPropsFromRedux => {
+    return {
+        selectedPizzas: state
+    }
+};
+
+export default connect(mapStateToProps, null)(Cart)

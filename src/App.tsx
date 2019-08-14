@@ -1,7 +1,6 @@
 import * as React from 'react';
-import {useState} from 'react';
-import {Menu} from "./Menu";
-import {Cart} from "./Cart";
+import Menu from "./Menu";
+import Cart from "./Cart";
 
 export interface Pizza {
     name: string;
@@ -9,11 +8,8 @@ export interface Pizza {
 }
 
 export const App = () => {
-    const [pizzas, setPizzas] = useState([]);
     return <div>
-        <Menu addToCart={(pizza: Pizza) => {
-            setPizzas([...pizzas, pizza])
-        }}/>
-        <Cart pizzas={pizzas}/>
+        <Menu/>
+        <Cart/>
     </div>
 };

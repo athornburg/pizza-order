@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {connect} from "react-redux";
+import {Pizza} from "./App";
 
 const MenuItems = [
     {name: "Pepperoni", price: "$12.75"},
@@ -6,7 +8,12 @@ const MenuItems = [
     {name: "Shishito Pepper", price: "$11.10"}
 ];
 
-export const Menu = (props: { addToCart: (pizza: { name: string, price: string }) => void }) => {
+interface MenuActions {
+    addToCart: (pizza: Pizza) => void;
+}
+
+
+export const Menu = (props: MenuActions) => {
     return <div>
         {
             MenuItems.map(menuItem => {
@@ -22,3 +29,14 @@ export const Menu = (props: { addToCart: (pizza: { name: string, price: string }
         }
     </div>;
 };
+
+export const mapDispatchToProps = (dispatch: any) => {
+    return {
+        addToCart: (selectedPizza: Pizza) => dispatch({
+            type: 'ADD_PIZZA_TO_CART_ACTION',
+            pizza: selectedPizza,
+        })
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Menu)
