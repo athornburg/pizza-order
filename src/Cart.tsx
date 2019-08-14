@@ -1,6 +1,7 @@
 import * as React from 'react';
+import {Pizza} from "./App";
 
-export const Cart = (props: { pizzas: { name: string, price: string }[] }) => {
+export const Cart = (props: { pizzas: Pizza[] }) => {
     return <div>
         <div> Cart</div>
         {
